@@ -199,10 +199,8 @@ var _ = Describe("Keys", func() {
 				host1  = "kubernetes.io"
 				path0  = "abc/def"
 				path1  = "123/456"
-				norm00 = "//kubernetes.io/abc/def/"
+				norm00 = "//keda.sh/abc/def/"
 				norm01 = "//kubernetes.io/123/456/"
-				norm10 = "//keda.sh/abc/def/"
-				norm11 = "//keda.sh/123/456/"
 			)
 
 			keys := NewKeysFromHTTPSO(&httpv1alpha1.HTTPScaledObject{
@@ -220,8 +218,6 @@ var _ = Describe("Keys", func() {
 			Expect(keys).To(ConsistOf(Keys{
 				Key(norm00),
 				Key(norm01),
-				Key(norm10),
-				Key(norm11),
 			}))
 		})
 

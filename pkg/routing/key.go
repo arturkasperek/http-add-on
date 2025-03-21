@@ -69,21 +69,23 @@ func NewKeysFromHTTPSO(httpso *httpv1alpha1.HTTPScaledObject) Keys {
 	if hosts == nil {
 		hosts = []string{""}
 	}
-	hostsSize := len(hosts)
 
 	pathPrefixes := spec.PathPrefixes
 	if pathPrefixes == nil {
 		pathPrefixes = []string{""}
 	}
-	pathPrefixesSize := len(pathPrefixes)
 
-	keysSize := hostsSize * pathPrefixesSize
-	keys := make([]Key, 0, keysSize)
-	for _, host := range hosts {
-		for _, pathPrefix := range pathPrefixes {
-			key := NewKey(host, pathPrefix)
-			keys = append(keys, key)
-		}
+	// Determine the smaller length
+	pairsSize := len(hosts)
+	if len(pathPrefixes) < pairsSize {
+		pairsSize = len(pathPrefixes)
+	}
+
+	keys := make([]Key, 0, pairsSize)
+
+	for i := 0; i < pairsSize; i++ {
+		key := NewKey(hosts[i], pathPrefixes[i])
+		keys = append(keys, key)
 	}
 
 	return keys
