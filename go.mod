@@ -26,6 +26,7 @@ require (
 	sigs.k8s.io/controller-runtime v0.19.6
 	sigs.k8s.io/gateway-api v1.2.1
 	sigs.k8s.io/kustomize/kustomize/v5 v5.6.0
+	github.com/gorilla/websocket v1.5.1
 )
 
 replace (
