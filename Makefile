@@ -4,7 +4,7 @@
 SHELL           = /bin/bash
 
 IMAGE_REGISTRY 	?= ghcr.io
-IMAGE_REPO     	?= kedacore
+IMAGE_REPO     	?= arturkasperek
 VERSION 		?= main
 
 IMAGE_OPERATOR 		?= ${IMAGE_REGISTRY}/${IMAGE_REPO}/http-add-on-operator
